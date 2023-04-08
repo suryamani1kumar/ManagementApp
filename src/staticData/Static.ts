@@ -1,7 +1,7 @@
 import { dropdown } from '../utils/Type';
 
 const Player: dropdown[] = [
-  { id: 0, name: 'Select Player', value: 0 },
+  // { id: 0, name: 'Select Player', value: 0 },
   { id: 1, name: 2, value: 2 },
   { id: 2, name: 3, value: 3 },
   { id: 3, name: 4, value: 4 },
@@ -11,7 +11,7 @@ const Player: dropdown[] = [
 ];
 
 const CreateBy: dropdown[] = [
-  { id: 0, value: 'Select field', name: 'Select field' },
+  // { id: 0, value: 'Select field', name: 'Select field' },
   { id: 1, value: 'Own', name: 'Own' },
   { id: 2, value: 'Friend', name: 'Friend' },
   { id: 3, value: 'Telegram', name: 'Telegram' },

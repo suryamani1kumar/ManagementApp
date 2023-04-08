@@ -9,40 +9,43 @@ import {
 import React, { useState } from 'react';
 import { dropdown } from '../utils/Type';
 
-type ItemProps = dropdown;
-type modalProps = { list: dropdown[] };
+type ItemProps = {
+  items: dropdown;
+};
+type modalProps = {
+  list: dropdown[];
+};
 
 const DropdownModal: React.FC<modalProps> = (props): JSX.Element => {
   const { list } = props;
-
   const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState();
-  const onItemPress = (value): void => {
-    setSelected(value);
-    setVisible(false);
+  // const [selected, setSelected] = useState<{ value: string }>({ value: null });
+  const onItemPress = (value: string | number): void => {
+    // setSelected({ value: value });
+    // setVisible(false);
   };
+  // console.log(selected);
 
-  const renderItem: React.FC<ItemProps> = (props): JSX.Element => {
-    const { name, value, ...data } = props;
-
+  const RenderItem: React.FC<ItemProps> = (props): JSX.Element => {
+    const { items } = props;
+    console.log('item', items);
     return (
-      <TouchableOpacity onPress={() => onItemPress(value)}>
-        <Text>{name}</Text>
+      <TouchableOpacity>
+        {/* onPress={() => onItemPress(item)} */}
+        <Text>{items.name}</Text>
       </TouchableOpacity>
     );
   };
 
   return (
-    <Modal visible={false} transparent animationType="none">
+    <Modal visible={true}>
       <TouchableOpacity onPress={() => setVisible(false)}>
         <View style={[styles.dropdown]}>
-          {/* {visible && ( */}
           <FlatList
             data={list}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => renderItem(item)}
+            renderItem={({ item }) => <RenderItem items={item} />}
           />
-          {/* )} */}
         </View>
       </TouchableOpacity>
     </Modal>

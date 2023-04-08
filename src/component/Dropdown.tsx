@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { dropdown } from '../utils/Type';
 import DropdownModal from './DropdownModal';
+import staticdata from '../staticData/Static';
 
 type Props = {
   label: string;
@@ -17,34 +18,12 @@ const Dropdown: React.FC<Props> = (props): JSX.Element => {
     setVisible(!visible);
   };
 
-  // const renderDropDown = () => {
-  //   if (visible) {
-  //     return (
-  //       <Text style={styles.dropdown}>
-  //         {data.map((item) => (
-  //           <Text key={item.id} style={styles.dropdown}>
-  //             {item.name}
-  //           </Text>
-  //         ))}
-  //       </Text>
-  //     );
-  //   }
-  // };
-
   return (
     <TouchableOpacity onPress={toggleDropdown} style={styles.button}>
       <Text style={styles.buttonText}>{label}</Text>
-      {/* {renderDropDown()} */}
-      {/* {visible && (
-        <Text style={styles.dropdown}>
-          {data.map((item) => (
-            <Text key={item.id} style={styles.list}>
-              {item.name}
-            </Text>
-          ))}
-        </Text>
-      )} */}
-      {visible && <DropdownModal list={data} />}
+      {visible && <DropdownModal list={staticdata.Player} />}
+      {/* {visible && <Text style={styles.dropdown}>dfasdfds</Text>} */}
+      {/* <DropdownModal list={data} /> */}
       <AntDesign name="down" size={20} />
     </TouchableOpacity>
   );
